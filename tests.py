@@ -151,4 +151,17 @@ class CupcakeViewsTestCase(TestCase):
 
             self.assertEqual(Cupcake.query.count(),0)
     
+    def test_404_errors(self):
+        url = f"/api/cupcakes/999"
+        with app.test_client() as client:
+            resp = client.delete(url)
+            self.assertEqual(resp.status_code,404)
+        with app.test_client() as client:
+            resp = client.patch(url, json=CUPCAKE_DATA_3)
+            self.assertEqual(resp.status_code, 404)
+        with app.test_client() as client:
+            resp = client.get(url)
+            self.assertEqual(resp.status_code, 404)
+            
+    
     

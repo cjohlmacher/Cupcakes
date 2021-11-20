@@ -77,8 +77,8 @@ class CupcakeForm {
 class Cupcake {
     constructor(id,flavor,size,rating,image) {
         this.id = id;
-        this.flavor = flavor;
-        this.size = size;
+        this.flavor = flavor.charAt(0).toUpperCase()+flavor.slice(1);
+        this.size = size.charAt(0).toUpperCase()+size.slice(1);
         this.rating = rating;
         this.image = image;
     }
